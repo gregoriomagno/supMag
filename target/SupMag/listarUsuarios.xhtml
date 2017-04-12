@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            <p:dataTable id="dtContratantes" var="usuario" value="#{ListarUsuario.usuario}">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar em todos os campos:" />
+                        <p:inputText style="width:150px" placeholder="Pressione uma tecla"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column headerText="ID" width="10">
+                    <h:outputText value="#{usuario.id}"/>
+                </p:column>
+                <p:column headerText="Nome" sortBy="#{usuario.nome}" width="150"
+                          filterBy="#{usuario.nome}" filterMatchMode="contains">
+                    <h:outputText value="#{usuario.nome}"/>
+                </p:column>
+                <p:column headerText="Descrição" width="100">
+                    <h:outputText value="#{usuario.cpf}"/>
+                </p:column>
+
+                <p:column headerText="Categoria" width="30">
+                    <h:outputText value="#{usuario.perfil}"/>
+                </p:column>
+
+                <p:column headerText="Quant" width="30">
+                    <h:outputText value="#{usuario.email}"/>
+                </p:column>
+
+                <p:column headerText="Preço unt." width="30">
+                    <h:outputText value="#{usuario.id
+}"/>
+                </p:column>
+                <f:facet name="footer">
+                    No total temos #{ListarUsuario.usuario.size()} Usuario.
+                </f:facet>
+            </p:dataTable>
+
+        </h:form>
+    </h:body>
+</html>

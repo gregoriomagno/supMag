@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <link rel="stylesheet" href="css/style.css"/>  
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:growl id="messages"/>
+
+            <p:menubar>
+                <p:menuitem value="HOME" url="http://localhost:8080/SupMag/" icon="ui-icon-home" />
+
+                <p:menuitem value="LOGIN" url="http://localhost:8080/SupMag/usuario.jsf" icon="ui-icon-person"/>
+                <p:submenu label="Help" icon="ui-icon-help">
+                    <p:menuitem value="Contents" url="#" />
+                    <p:submenu label="Search" icon="ui-icon-search">
+                        <p:submenu label="Text">
+                            <p:menuitem value="Workspace" url="#" />
+                        </p:submenu>
+                        <p:menuitem value="File" url="#" />
+                    </p:submenu>
+                </p:submenu>
+
+                <p:submenu label="Actions" icon="ui-icon-gear">
+                    <p:submenu label="Ajax" icon="ui-icon-refresh">
+                        <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
+                        <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+                    </p:submenu>
+                    <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+                    </p:submenu>
+                </p:submenu>
+
+                <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+
+                <f:facet name="options">
+                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+        <h:form>
+            <div id="paine-dialog">
+                <h3>Cadastro de Usuário</h3>
+                <p:panelGrid id="dadosUsuario" columns="2" styleClass="grid-paine">
+
+                    <p:outputLabel id="nomeText" value="Nome:"/>
+                    <p:inputText id="nome" value="#{cadastroUsuarioBean.usuario.nome}" />
+
+                    <p:outputLabel id="cpfText" value="CPF:"/>
+                    <p:inputText id="cpf" value="#{cadastroUsuarioBean.usuario.cpf}"/>
+
+                    <p:outputLabel id="emailText" value="Email:"/>
+                    <p:inputText id="email"  value="#{cadastroUsuarioBean.usuario.email}" />
+
+                    <p:outputLabel id="perfilText" value="Perfil:"/>
+                    <p:selectOneMenu id="perfil" label="Perfil" value="#{cadastroUsuarioBean.usuario.perfil}">
+                        <f:selectItem itemLabel="Administrador" itemValue="Administrador"/>
+                        <f:selectItem itemLabel="Cliente" itemValue="Cliente"/>
+                        <f:selectItem itemLabel="Vendedor" itemValue="Vendedor"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+
+                <br/>
+                <p:commandButton id="salvar" value="Salvar" styleClass="boton" action="#{cadastroUsuarioBean.adicionar()}" >
+                </p:commandButton>
+            </div>
+        </h:form>
+    </h:body>
+</html>
