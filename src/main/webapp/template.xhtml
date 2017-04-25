@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    <h:head>
+        <title>SupMag</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    </h:head>
+    <h:body>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+
+                    <!-- Header -->
+                    <header id="header">
+                        <a href="index.xhtml" class="logo"><strong>SupMag</strong></a>
+                        <ul class="icons">
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+                        </ul>
+                    </header>
+
+                    <!-- Content -->
+                    <section>
+                        <ui:insert name = "conteudo">
+
+                        </ui:insert>
+                    </section>
+
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="inner">
+
+                    
+
+                    <!-- Menu -->
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="index.jsf">Homepage</a></li>
+                            <li><a href="CadastroUsuario.xhtml">Cadastro</a></li>
+                            
+                            <li><a href="listU.xhtml">Usuarios</a></li>
+                            
+                           
+                            
+                        </ul>
+                    </nav>
+
+                    <!-- Section -->
+                    
+                    <section>
+                        <ul class="contact">
+                            <li class="fa-envelope-o"><a href="#">magno8phb@gmail.com</a></li>
+                            <li class="fa-phone">(86) 9889-8717</li>
+                            <li class="fa-home">Parnaiba <br />
+                                </li>
+                        </ul>
+                    </section>
+
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+    </h:body>
+</html>

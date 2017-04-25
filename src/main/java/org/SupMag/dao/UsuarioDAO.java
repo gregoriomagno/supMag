@@ -23,6 +23,7 @@ public class UsuarioDAO {
     @Transactional
     public void salvar(Usuario usuario){
         em.persist(usuario);
+        
     }
 
     public List<Usuario> buscarTodos() {

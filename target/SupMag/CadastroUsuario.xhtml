@@ -1,0 +1,43 @@
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"  
+             xmlns:h="http://java.sun.com/jsf/html"    
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">  
+
+    <ui:define name="conteudo">
+        <h:form >
+            <div class="row uniform">
+                <div class="8u 12u">
+                    <h:inputText id="name" value="#{cadastroUsuarioBean.usuario.nome}" pt:placeholder="Nome" />
+                </div>
+                <div class="8u 12u">
+                    <h:inputText id="email" value="#{cadastroUsuarioBean.usuario.email}" pt:placeholder="Email" />
+                </div>
+
+                <div class="8u 12u (xsmall)">
+                    <h:inputText  id="cpf" value="#{cadastroUsuarioBean.usuario.cpf}" pt:placeholder="Cpf" />
+                </div>
+                <div class="8u 12u">
+                    <div class="select-wrapper">
+                        <h:selectOneMenu  id="category" value="#{cadastroUsuarioBean.usuario.perfil}">
+                            <f:selectItem itemLabel="Sexo" itemValue="- Sexo -" />
+                            <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+                            <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+
+               
+                <div class="12u">
+                    <ul class="actions">
+                        <li><input type="submit" value="Cadastrar" class="special" action="#{cadastroUsuarioBean.adicionar()}"/></li>
+                        <li><input type="reset" value="Cancelar" /></li>
+                    </ul>
+                </div>
+            </div>
+        </h:form> 
+    </ui:define>
+</ui:decorate>  

@@ -10,34 +10,67 @@
         
     </h:head>
     <body>
-        <div style="width: 400px"> 
-            <h:form id="form1">
-                <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
-                <p:panelGrid id="panel" columns="2">
+        <h:form>  
+    <p:growl id="messages"/>
+    <p:menubar>
+        <p:menuitem value="HOME" url="http://localhost:8080/SupMag/" icon="ui-icon-home" />
+ 
+        <p:menuitem value="LOGIN" url="http://localhost:8080/SupMag/usuario.jsf" icon="ui-icon-person"/>
+ 
+        <p:submenu label="Help" icon="ui-icon-help">
+            <p:menuitem value="Contents" url="#" />
+            <p:submenu label="Search" icon="ui-icon-search">
+                <p:submenu label="Text">
+                    <p:menuitem value="Workspace" url="#" />
+                </p:submenu>
+                <p:menuitem value="File" url="#" />
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:submenu label="Actions" icon="ui-icon-gear">
+            <p:submenu label="Ajax" icon="ui-icon-refresh">
+                <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
+                <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+            </p:submenu>
+            <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+        </f:facet>
+    </p:menubar>
+</h:form>
+        <h:form>
+            <div id="paine-dialog">
+                <h3>Cadastro de Produto</h3>
+                <p:panelGrid id="dadosProduto" columns="2" styleClass="grid-paine">
 
-                    <p:outputLabel>Nome: </p:outputLabel>
-                    <p:inputText id="nome" value="#{mbCadastrarProduto.produto.nome}" required="true" requiredMessage="O campo nome é obrigatorio!"/>
+                    <p:outputLabel id="nomeText" value="Nome:"/>
+                    <p:inputText id="nome" value="#{cadastroProdutoBean.produtoMag.nome}" />
 
-                    <p:outputLabel>Descrição: </p:outputLabel>
-                    <p:inputTextarea rows="2" cols="21" value="#{mbCadastrarProduto.produto.descricao}" />
+                    <p:outputLabel id="corText" value="Cor:"/>
+                    <p:inputText id="cpf" value="#{cadastroProdutoBean.produtoMag.cor}"/>
 
-                    <p:outputLabel>Categoria: </p:outputLabel>
-                    <p:inputText value="#{mbCadastrarProduto.produto.categoria}" required="true" requiredMessage="A categoria é obrigatoria!"/>
+                    <p:outputLabel id="DescricaoText" value="Descrião:"/>
+                    <p:inputText id="email"  value="#{cadastroProdutoBean.produtoMag.descrição}" />
 
-                    <p:outputLabel>Quantidade: </p:outputLabel>
-                    <p:spinner value="#{mbCadastrarProduto.produto.quantidade}" required="true" requiredMessage="É necessario informar a quantidade disponivel do produto!"/>
-
-                    <p:outputLabel>Preço:</p:outputLabel>
-                    <p:inputNumber value="#{mbCadastrarProduto.produto.preco}" required="true" requiredMessage="O preço é obrigatorio!"/>
-
-                    <p></p>
-                    <p:commandButton value="Cadastrar" update="@form" action="#{mbCadastrarProduto.adicionar()}" style="width: 230px !important;">
-                        
-                    </p:commandButton>
-
-
+                    <p:outputLabel id="perfilText" value="Perfil:"/>
+                    <p:selectOneMenu id="perfil" label="Perfil" value="#{cadastroProdutoBean.produtoMag.tipo}">
+                        <f:selectItem itemLabel="Criatura" itemValue="Criatura"/>
+                        <f:selectItem itemLabel="Magica" itemValue="Magica"/>
+                        <f:selectItem itemLabel="Encantamento" itemValue="Encantamento"/>
+                    </p:selectOneMenu>
                 </p:panelGrid>
-            </h:form>
-        </div>
+
+                <br/>
+                <p:commandButton id="salvar" value="Salvar" styleClass="boton" action="#{cadastroProdutoBean.adicionar()}" >
+                </p:commandButton>
+            </div>
+        </h:form>
     </body>
 </html>
